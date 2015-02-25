@@ -1,0 +1,16 @@
+.vagrant
+.DS_Store
+
+.idea/*
+*.iml
+projectFilesBackup
+.tmp/
+.librarian/
+.vagrant/
+
+modules/apt/*
+modules/concat/*
+modules/staging/*
+modules/mongodb/*
+modules/mysql/*
+modules/stdlib/*
