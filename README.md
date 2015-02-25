@@ -13,52 +13,69 @@
 * NGINX
 * Nodemon, Yo, Bower, Grunt-Cli, Mocha, Karma
 
-## Instructions
+## Prerequisites
+Make sure you have installed all of the following prerequisites on your development machine:
 
-### Install Vagrant
+* **VirtualBox** - [VirtualBox](https://www.virtualbox.org/wiki/Downloads) is a powerful x86 and AMD64/Intel64 virtualization product for enterprise as well as home use.
 
-* Download and install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-* Download and install [Vagrant](https://www.vagrantup.com/downloads.html)
+* **Vagrant** - [Vagrant](https://www.vagrantup.com/downloads.html) is a tool for building and distributing development environments
 
-Once you have installed VirtualBox and Vagrant, install the _VirtualBox Guest Additions Plugin_
+* **Puppet** - [Puppet](https://puppetlabs.com/misc/download-options) is a server automation framework and application
 
-````$ vagrant plugin install vagrant-vbguest````
+* **VirtualBox Guest Additions Plugin** - A Vagrant plugin to keep your VirtualBox Guest Additions up to date
+  
+   ````$ vagrant plugin install vagrant-vbguest````
 
-### Install Librarian-puppet
+* **Librarian-puppet** - Librarian-puppet is a bundler for your puppet infrastructure, used to manage the puppet modules your infrastructure depends on
+  
+  ````$ gem install librarian-puppet````
 
-````$ gem install librarian-puppet````
+
+## Dev Workflow
+
+Navigate to the project root directory ````/meanest-vagrant````
 
 ### Initialize and fetch puppet modules
 
 ````$ librarian-puppet install````
 
+### Up and running
 
-## Dev Workflow
-
-cd into ````/meanest-vagrant```` and run
+It is time to boot your Vagrant environment. Run the following:
 
 ````$ vagrant up````
 
-Connect to the virtual machine via ssh:
+You now have a fully running virtual machine in VirtualBox running Ubuntu 64-bit AMD 14.04
+
+### Connect to the virtual machine via ssh:
+
+Now you want to connect to your virtual machine. This command will drop you into a full-fledged SSH session.
 
 ````$ vagrant ssh````
 
-Last but not least let's launch the application by navigating to the project root directory and running grunt
+### Run MySQL migration script
+
+Now that your connected to your virtual machine ````cd```` into the ````$ ~code/meanest/server/data```` directory
+
+Then run ````$ node migrate.js````
+
+### Last but not least let's launch the application by navigating to the project root directory and running grunt
 
 ````$ cd code/meanest````
 
 ````$ grunt````
 
+For more details on this projects recommended development workflow goto [THIS](https://github.com/DomenicoColandrea86/meanest) repo
+
 ## Post-Installation Configuration
 
-### Run MySQL migration script
+### update your machine's host file
 
-cd into ````$ ~code/meanest/server/data````
+````127.0.0.1 dev.meanest.com````
 
-Then run ````$ node migrate.js````
+### Log into Sequel Pro via SSH
 
-Log into Sequel Pro via SSH
-
+````
 * Name: Meanest
 * MySQL Host: 192.168.22.10
 * Username: root
@@ -67,10 +84,22 @@ Log into Sequel Pro via SSH
 * SSH User: vagrant
 * SSH Password: vagrant
 * SSH Port: vagrant
+````
 
-### update your machine's host file
 
-````127.0.0.1 dev.meanest.com````
+## Other Helpful Vagrant commands:
+
+**vagrant suspend** will save the current running state of the machine and stop it. When you're ready to begin working again, just run vagrant up, and it will be resumed from where you left off.
+
+````$ vagrant suspend````
+
+**vagrant halt** will gracefully shut down the guest operating system and power down the guest machine. You can use vagrant up when you're ready to boot it again.
+
+````$ vagrant halt````
+
+**vagrant destroy** will remove all traces of the guest machine from your system. It'll stop the guest machine, power it down, and remove all of the guest hard disks.
+
+````$ vagrant destroy````
     
 ## Environment Details
 
