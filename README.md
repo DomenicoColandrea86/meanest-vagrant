@@ -59,7 +59,7 @@ Now that your connected to your virtual machine ````cd```` into the ````$ ~code/
 
 Then run ````$ node migrate.js````
 
-### Last but not least let's launch the application by navigating to the project root directory and running grunt
+### Last but not least let's launch the application by navigating to the project root directory and kickoff Grunt
 
 ````$ cd code/meanest````
 
