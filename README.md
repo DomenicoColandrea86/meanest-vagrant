@@ -73,6 +73,10 @@ For more details on this projects recommended development workflow goto [THIS](h
 
 ````127.0.0.1 dev.meanest.com````
 
+We use Nginx as a reverse proxy, serving HTTPS to the client
+
+[https://dev.meanest.com:3000](https://dev.meanest.com:3000)
+
 ### Log into Sequel Pro via SSH
 
 ````
